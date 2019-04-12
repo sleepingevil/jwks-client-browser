@@ -2,10 +2,10 @@
 
 [![CircleCI](https://circleci.com/gh/sleepingevil/jwks-client-browser/tree/master.svg?style=shield&circle-token=bb6e7035614311760a76fa79719408011684f75e)](https://circleci.com/gh/sleepingevil/jwks-client-browser/tree/master.svg?label=circleci)
 [![codecov](https://codecov.io/gh/sleepingevil/jwks-client-browser/branch/master/graph/badge.svg)](https://codecov.io/gh/sleepingevil/jwks-client-browser)
-![Dependencies](https://david-dm.org/meza/jwks-client-browser.svg)
+![Dependencies](https://img.shields.io/david/sleepingevil/jwks-client-browser.svg)
 [![install size](https://packagephobia.now.sh/badge?p=jwks-client-browser)](https://packagephobia.now.sh/result?p=jwks-client-browser)
-[![npm downloads](https://img.shields.io/npm/dm/jwks-client-browser.svg?style=flat-square)](http://npm-stat.com/charts.html?package=jwks-client-browser)
-![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/jwks-client-browser.svg)
+![npm downloads](https://img.shields.io/npm/dt/jwks-client-browser.svg)
+[![Known Vulnerabilities](https://snyk.io/test/npm/jwks-client-browser/badge.svg)](https://snyk.io/test/npm/jwks-client-browser)
 ![NPM](https://img.shields.io/npm/l/jwks-client-browser.svg)
 
 This pacakge was created, because the current JWKS clients available only work in node, but not in the browser. This client is specifically designed to work in the browser. Given a JWKS endpoint URL and a `kid` it will retrieve the public key that you can use for JWT verification.
