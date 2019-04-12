@@ -5,6 +5,7 @@
   "main": "dist/JwksClient.js",
   "scripts": {
     "test": "jest --coverage",
+    "test:ci": "npm run test && codecov",
     "build": "npm run clean && tsc -d",
     "clean": "del dist"
   },
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/jest": "^24.0.11",
+    "codecov": "^3.3.0",
     "del-cli": "^1.1.0",
     "jest": "^24.7.1",
     "ts-jest": "^24.0.2",
