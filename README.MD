@@ -48,7 +48,7 @@ const jwksClient: JwksClient = new JwksClient({ url: '[your_jwks_endpoint]' });
 const signingKey: ISigningKeyPem = jwksClient.getSigningKey(kid);
 ```
 
-Once you acquired the public key, you can use it to verify the token. Here's an example using the `jsonwebtoken` pacakge:
+Once you acquired the public key, you can use it to verify the token. Here's an example using the `jsonwebtoken` package:
 
 ```typescript
 import jwt from 'jsonwebtoken';
