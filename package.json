@@ -2,9 +2,11 @@
   "name": "jwks-client-browser",
   "version": "0.0.1",
   "description": "Library to retrieve public key from a JWKS endpoint in the browser.",
-  "main": "dist/index.js",
+  "main": "dist/JwksClient.js",
   "scripts": {
-    "test": "test"
+    "test": "jest --coverage",
+    "build": "npm run clean && tsc -d",
+    "clean": "del dist"
   },
   "keywords": [
     "jwks",
@@ -14,5 +16,43 @@
     "security"
   ],
   "author": "Almos Gabor <gabor.almos@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^24.0.11",
+    "del-cli": "^1.1.0",
+    "jest": "^24.7.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 43.43,
+        "functions": 52.37,
+        "lines": 67.01,
+        "statements": 63.99
+      }
+    },
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testMatch": [
+      "**/?(*.)test.ts?(x)"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!**/*.d.ts",
+      "!**/node_modules/**"
+    ]
+  }
 }
