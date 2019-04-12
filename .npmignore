@@ -6,3 +6,4 @@ src
 coverage
 __mocks__
 .idea
+!dist
