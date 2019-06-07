@@ -1,6 +1,6 @@
 {
   "name": "jwks-client-browser",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Library to retrieve public key from a JWKS endpoint in the browser.",
   "main": "dist/JwksClient.js",
   "scripts": {
