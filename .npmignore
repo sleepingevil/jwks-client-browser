@@ -7,3 +7,5 @@ coverage
 __mocks__
 .idea
 !dist
+*.log
+.circleci
