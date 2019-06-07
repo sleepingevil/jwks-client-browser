@@ -1,7 +1,7 @@
 import JwksClient from './JwksClient';
 import axios from 'axios';
 
-const mockedAxios = axios as jest.Mocked<any>;
+const { get: mockedAxiosGet } = axios as jest.Mocked<any>;
 
 const validJwks = {
   'keys': [
@@ -76,20 +76,17 @@ describe('JwksClient', () => {
     jwksClient = new JwksClient({
       url: 'https://testURL',
     });
-    mockedAxios.mockReturnValueOnce(Promise.resolve({
+    mockedAxiosGet.mockReturnValueOnce(Promise.resolve({
       status: 200,
       data: validJwks,
     }));
     await expect(jwksClient.getSigningKey('testKid'));
-    expect(mockedAxios).toHaveBeenCalledWith({
-      method: 'GET',
-      url: 'https://testURL',
-    });
+    expect(mockedAxiosGet).toHaveBeenCalledWith('https://testURL');
   });
 
   describe('When jwks GET request fails', () => {
     beforeEach(() => {
-      mockedAxios.mockReturnValueOnce(Promise.reject(new Error('testError')));
+      mockedAxiosGet.mockReturnValueOnce(Promise.reject(new Error('testError')));
       jwksClient = new JwksClient({
         url: 'https://testURL',
       });
@@ -108,7 +105,7 @@ describe('JwksClient', () => {
     });
 
     it('should reject with error message', async () => {
-      mockedAxios.mockReturnValueOnce(Promise.resolve({
+      mockedAxiosGet.mockReturnValueOnce(Promise.resolve({
         status: 109,
         data: {
           someProperty: 'someText',
@@ -118,7 +115,7 @@ describe('JwksClient', () => {
     });
 
     it('should reject with error message', async () => {
-      mockedAxios.mockReturnValueOnce(Promise.resolve({
+      mockedAxiosGet.mockReturnValueOnce(Promise.resolve({
         status: 200,
         data: {
           someProperty: 'someText',
@@ -130,7 +127,7 @@ describe('JwksClient', () => {
 
   describe('When jwks GET request passes, but there are no signing keys', () => {
     beforeEach(() => {
-      mockedAxios.mockReturnValueOnce(Promise.resolve({
+      mockedAxiosGet.mockReturnValueOnce(Promise.resolve({
         status: 200,
         data: validJwksWithNoSigningKey,
       }));
@@ -146,7 +143,7 @@ describe('JwksClient', () => {
 
   describe('When jwks GET request passes, but the signing key is empty', () => {
     beforeEach(() => {
-      mockedAxios.mockReturnValueOnce(Promise.resolve({
+      mockedAxiosGet.mockReturnValueOnce(Promise.resolve({
         status: 200,
         data: validJwksWithEmptyCert,
       }));
@@ -166,7 +163,7 @@ describe('JwksClient', () => {
 
   describe('When jwks GET request passes, but the signing key list is empty', () => {
     beforeEach(() => {
-      mockedAxios.mockReturnValueOnce(Promise.resolve({
+      mockedAxiosGet.mockReturnValueOnce(Promise.resolve({
         status: 200,
         data: validJwksWithNoCert,
       }));
@@ -182,7 +179,7 @@ describe('JwksClient', () => {
 
   describe('When jwks GET request passes', () => {
     beforeEach(() => {
-      mockedAxios.mockReturnValueOnce(Promise.resolve({
+      mockedAxiosGet.mockReturnValueOnce(Promise.resolve({
         status: 200,
         data: validJwks,
       }));
@@ -207,7 +204,7 @@ describe('JwksClient', () => {
       await jwksClient.getSigningKey('testKid');
       await jwksClient.getSigningKey('testKid');
 
-      expect(axios).toHaveBeenCalledTimes(1);
+      expect(mockedAxiosGet).toHaveBeenCalledTimes(1);
     });
   });
 });

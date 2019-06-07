@@ -39,11 +39,7 @@ export default class JwksClient implements IJwksClient {
   }
 
   private getJwks(cb: GetJwksCallback) {
-    const request = {
-      method: 'GET',
-      url: this.options.url,
-    };
-    axios(request)
+    axios.get(this.options.url)
       .then((res: AxiosResponse<IJwksResponseBody>) => {
         if (res.status < 200 || res.status >= 300) {
           return cb(new JwksError(`Couldn't get JWKS, Http Error ${res.status}`));
