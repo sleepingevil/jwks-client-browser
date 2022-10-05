@@ -20,7 +20,7 @@
   "author": "Almos Gabor <gabor.almos@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19"
+    "axios": "^0.21.3"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
